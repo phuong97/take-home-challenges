@@ -28,7 +28,6 @@ function Categories() {
         <div>
           <ul>
             <li>{g.subcategories[0].name}</li>
-            <img src={g.gif.images.original.url} />
           </ul>
         </div>
       ))}

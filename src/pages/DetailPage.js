@@ -7,6 +7,7 @@ const DetailPage = () => {
   const URL = "https://api.giphy.com/v1/";
   const API_key = "l9ZzUfxmf0VH7TNFFC46TjT4Rn6GkDD7";
   const [gif, setGif] = useState({});
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!id) {
@@ -20,6 +21,7 @@ const DetailPage = () => {
       const dataGIF = await response.json();
       console.log(dataGIF);
       setGif(dataGIF.data);
+      setImage(dataGIF.data.images.original.webp);
       setLoading(false);
     }
     fetchData();
@@ -34,9 +36,9 @@ const DetailPage = () => {
         ) : (
           <div className="detail-page-container">
             <Card style={{ width: "18rem" }} key={gif.id}>
-              {/* <Card.Img variant="top" src={gif.images.original.webp} /> */}
+              <Card.Img variant="top" src={image} />
               <Card.Body>
-                <Card.Title>{gif.id}</Card.Title>
+                <Card.Title>{gif.title}</Card.Title>
               </Card.Body>
             </Card>
           </div>
