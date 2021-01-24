@@ -4,13 +4,14 @@ import React, { useState, useEffect } from "react";
 import { Card, CardDeck } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PublicNavBar from "../component/PublicNavBar";
-function Homepage() {
+function Categories() {
   const URL = "https://api.giphy.com/v1/";
   const API_key = "l9ZzUfxmf0VH7TNFFC46TjT4Rn6GkDD7";
   const [gifs, setGifs] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const url = `${URL}gifs/trending?api_key=${API_key}&limit=15&rating=g`;
+      const url = `${URL}gifs/categories?api_key=${API_key}`;
+
       const response = await fetch(url);
       const dataTrending = await response.json();
       // console.log(dataTrending);
@@ -22,19 +23,18 @@ function Homepage() {
     <div>
       {/* <MultipleItemsGIF gif={gif} /> */}
       <PublicNavBar />
-      <CardDeck>
-        {gifs.map((g) => (
-          <div>
-            <Card style={{ width: "18rem" }}>
-              <Link to={`/gif/${g.id}`} key={g.id}>
-                <Card.Img variant="top" src={g.images.original.webp} />
-              </Link>
-            </Card>
-          </div>
-        ))}
-      </CardDeck>
+      {/* <CardDeck> */}
+      {gifs.map((g) => (
+        <div>
+          <ul>
+            <li>{g.subcategories[0].name}</li>
+            <img src={g.gif.images.original.url} />
+          </ul>
+        </div>
+      ))}
+      {/* </CardDeck> */}
     </div>
   );
 }
 
-export default Homepage;
+export default Categories;

@@ -5,12 +5,15 @@ import "./App.css";
 import Homepage from "./pages/Homepage";
 import DetailPage from "./pages/DetailPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Categories from "./pages/Categories";
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />
+          <Route exact path="/gif/categories" component={Categories} />
           <Route exact path="/gif/:id" component={DetailPage} />
         </Switch>
       </Router>
