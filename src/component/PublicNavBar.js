@@ -4,15 +4,20 @@ import { Link } from "react-router-dom";
 const PublicNavBar = () => {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="background-navbar" expand="lg">
         <Navbar.Brand href="#home">GIPHY</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} exact to="/">
+            <Nav.Link as={Link} exact to="/" className="text-navbar">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} exact to="/gif/categories">
+            <Nav.Link
+              as={Link}
+              exact
+              to="/gif/categories"
+              className="text-navbar"
+            >
               Categories
             </Nav.Link>
           </Nav>

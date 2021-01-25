@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -38,4 +38,32 @@
 }
 .detail-page-container {
   text-align: center;
+}
+
+/* Public-Navbar */
+.background-navbar {
+  background-color: #282c34;
+}
+.mr-auto {
+  color: white;
+}
+/* HomePage */
+.home-page {
+  background-color: #282c34;
+}
+/* DetailPage */
+.detail-page {
+  background-color: #282c34;
+}
+
+.detail-page-container {
+  display: flex;
+  justify-content: center;
+}
+/* Categories page */
+.categories-page {
+  background-color: #282c34;
+}
+.text-h3 {
+  color: azure;
 }

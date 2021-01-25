@@ -28,10 +28,10 @@ const DetailPage = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="detail-page">
       <PublicNavBar />
       <div>
-        {loading && typeof gif === "undefined" ? (
+        {loading ? (
           <h2> Loading</h2>
         ) : (
           <div className="detail-page-container">

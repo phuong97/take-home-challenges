@@ -10,27 +10,29 @@ function Homepage() {
   const URL = "https://api.giphy.com/v1/";
   const API_key = "l9ZzUfxmf0VH7TNFFC46TjT4Rn6GkDD7";
   const [gifs, setGifs] = useState([]);
-  const [pageNum, setPageNum] = useState(1);
+  const [offset, setOffset] = useState(1);
   useEffect(() => {
     async function fetchData() {
-      const url = `${URL}gifs/trending?api_key=${API_key}&limit=15&rating=g&page=${pageNum}`;
+      const url = `${URL}gifs/trending?api_key=${API_key}&limit=15&rating=g&offset=${offset}`;
+      // const url = `${URL}gifs/trending?api_key=${API_key}&limit=15&rating=g`;
       const response = await fetch(url);
       const dataTrending = await response.json();
 
-      const totalData = [...dataTrending.data, ...gifs];
+      // const totalData = [...dataTrending.data, ...gifs];
       // const totalData = gifs.concat(dataTrending)
-      setGifs(totalData);
-      console.log(totalData);
+      // setGifs(totalData);
+      setGifs(dataTrending.data);
+      // console.log(totalData);
     }
     fetchData();
-  });
+  }, [gifs, offset]);
+  // }, [gifs]);
   return (
-    <div>
-      {/* <MultipleItemsGIF gif={gif} /> */}
+    <div className="home-page">
       <PublicNavBar />
       <InfiniteScroll
         dataLength={gifs.length}
-        next={() => setPageNum(pageNum + 1)}
+        next={() => setOffset(offset + 15)}
         hasMore={true}
         loader={<h4>Loading...</h4>}
       >
